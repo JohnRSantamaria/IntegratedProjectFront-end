@@ -1,0 +1,178 @@
+.detailsContainer
+{
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: calc(100vh - 120px); 
+  min-width: 100%;
+  width: 100%;
+  padding: 5px;
+}
+.backgroundDetails
+{
+  position: fixed;
+  top:0;
+  background: url('../../utils/background_form.jpg') center;
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  height: 100vh;
+  filter: blur(5px);
+  opacity: .5;
+  overflow: hidden;
+}
+.imageContainerDetails
+{
+  position: relative;
+  width: 100%;
+  height:30vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start;  
+}
+.imageContainerDetails img
+{
+  height: 100%;
+  width: auto;
+  border-radius: 50px 0 300px 0;
+  user-select: none;
+}
+.titleDetail
+{
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap; 
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.titleDetail h1
+{
+  color: #fffaf0;
+  font-size: 3.3em;
+  user-select: none;
+}
+.titleDetail h3
+{
+  position: absolute;
+  right: 40px;
+  bottom: 0;
+  color: rgb(228, 224, 0);
+  font-size: 3em;
+  user-select: none;
+}
+.informationContainer
+{
+  position: relative;
+  width: 100%;
+}
+.dietDetail
+{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;  
+  flex-flow: column ;
+  gap: 10px;  
+}
+.dietDetail button
+{
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  text-transform: capitalize;
+  font-size: 1em;
+  cursor: pointer;
+  background-color: #5a0802;
+  border-radius: 5px;
+  padding: 2px;
+}
+.dietDetail button:hover
+{
+  color: rgba(255, 235, 204,.5); 
+}
+.dietDetail button:active
+{
+  position: relative;
+  top: 1px;
+}
+.diet
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+
+.stepsDetail,
+.summarryDetails
+{
+  height: 27.5vh;
+  overflow: auto;
+  scroll-margin: none;
+}
+.stepsDetail *,
+.summarryDetails *
+{
+  color: #fffaf0;
+  font-weight: 400;
+  scroll-margin: none;
+}
+
+.summarryDetails h3,
+.stepsDetail h3
+{
+  text-align: center;
+  font-size: 1.5rem;  
+  color: rgb(255, 235, 204);
+}
+
+/* responsive */
+@media screen and (max-width: 960px) 
+{
+  .imageContainerDetails
+  {
+    height:20vh;
+  }
+  .titleDetail h1
+  {
+    font-size: 2.5em;
+  }
+  .titleDetail h3
+  {
+    font-size: 2.5em;
+  }
+  .stepsDetail,
+  .summarryDetails
+  {
+    height: 33vh;
+  }
+
+}
+@media screen and (max-width: 750px) 
+{
+  .titleDetail h1
+  {
+    font-size: 2em;
+  }
+  .titleDetail h3
+  {
+    font-size: 2em;
+  }
+}
+@media screen and (max-width: 520px) 
+{
+  .imageContainerDetails
+  {
+    height:10vh;
+  }
+  .titleDetail h1
+  {
+    font-size: 1.2em;
+  }
+  .titleDetail h3
+  {
+    font-size: 1em;
+  } 
+}

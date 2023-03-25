@@ -1,0 +1,13 @@
+export const GET_RECIPES = "GET_RECIPES";
+export const GET_APIDATA = "GET_APIDATA";
+export const GET_DATABASE = "GET_DATABASE";
+export const SEARCH_RECIPE = "SEARCH_RECIPE";
+export const SEARCH_RESULTS = "SEARCH_RESULTS";
+export const NINE_CARDS = "NINE_CARDS";
+export const FILTERED_RECIPES = "FILTERED_RECIPES";
+export const ORDER_ALPHA = "ORDER_ALPHA";
+export const ORDER_HEALTHIER = "ORDER_HEALTHIER";
+export const LIST_OF_ERRORS = "LIST_OF_ERRORS";
+export const SET_ERROR = "SET_ERROR";
+export const LOADING = "LOADING";
+export const DIETS_DATA = "DIETS_DATA";
