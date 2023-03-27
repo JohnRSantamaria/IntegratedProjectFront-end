@@ -5,6 +5,8 @@ import { Loader } from '../../components/Loader/Loader';
 import { filteredRecipes } from '../../redux/actions/actions';
 import { useNavigate } from 'react-router-dom';
 import styles from "./Details.module.css";
+import { fetchSearchById } from '../../helpers/fetchSearchById';
+
 
 
 export const Details = () => {
@@ -15,8 +17,7 @@ export const Details = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:3001/recipes/${id}`)
-      .then(response => response.json())
+    fetchSearchById(id)
       .then(result => {
         setIsLoading(false)
         setRecipes(result)
@@ -74,9 +75,3 @@ export const Details = () => {
       </div>
   )
 }
-
-
-/*
-        
-
-*/
