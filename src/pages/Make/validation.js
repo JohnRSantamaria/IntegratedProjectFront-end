@@ -12,7 +12,7 @@ const validation = ({title,summary,diets, healthScore,steps, image})=> {
   if(healthScore< 0 || healthScore > 100 ) errors.healthScore = "The valid range for The score is 0 to 100"
   if(diets.length <= 0) errors.diets = "You must select at least 1 Diet"
   if(image.length === 0) errors.image = "Yuo must add an Image"
-  if(steps.length <= 0) errors.steps = "You mush add at least 1 Diet"
+  if(steps.length <= 0) errors.steps = "You mush add at least 1 Step"
 
   return errors;
 }
