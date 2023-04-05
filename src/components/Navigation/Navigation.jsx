@@ -12,55 +12,59 @@ import menuBtn from "../../utils/menu-outline.svg";
 
 import { useNavigate } from "react-router-dom";
 
- const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false); 
+const Navigation = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [isToggleOn, setIsToggleOn] = useState(false);
-  const [searchValue, setSearchValue] = useState({
-    searchBox:""
-  });
+  const [searchValue, setSearchValue] = useState("");
+
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  
-  const handleClickSearchBtn =()=> {
+
+  const handleClickSearchBtn = () => {
     setIsOpen(true);
     setIsToggleOn(false);
-    isOpen ? dispatch(searchRecipe(searchValue.searchBox)) && navigate("/food") 
-    : setSearchValue({...searchValue,searchBox:""}); 
-    
-  } 
-  
-  const handleClickCloseBtn =()=> {
-    setIsOpen(false);
+    if (isOpen) {
+      setIsOpen(false);
+      navigate("/food");
+      dispatch(searchRecipe(searchValue.trim()));
+      setSearchValue("");
+    };
   }
 
-  const handleClickHeader = ()=> {
+  const handleClickCloseBtn = () => {
+    dispatch(searchRecipe(""));
+    setIsOpen(false);
+    setSearchValue("");
+  }
+
+  const handleClickHeader = () => {
     setIsToggleOn(!isToggleOn);
     setIsOpen(false);
   }
-  const handleSearch = (e)=> {
+  const handleSearch = (e) => {
     if (e.key.toLowerCase() === 'enter') {
       setIsOpen(true);
       setIsToggleOn(false);
-      isOpen ? dispatch(searchRecipe(searchValue.searchBox)) && navigate("/food") 
-      : setSearchValue({...searchValue,searchBox:""}); 
-  }
+      if (isOpen) {
+        dispatch(searchRecipe(searchValue.trim()));
+        navigate("/food");
+        setIsOpen(false);
+        setSearchValue("");
+      }
+    }
   }
 
   //Redux
-
-  const onSearchChange = (e)=> {
-    setSearchValue({
-      ...searchValue,
-      [e.target.name]: e.target.value
-    });
+  const onSearchChange = ({ target }) => {
+    setSearchValue(target.value);
   }
-  const handleClick = ()=>{
+  const handleClick = () => {
     setIsToggleOn(!isToggleOn);
   }
 
   return (
-    <header className={ `${isToggleOn? styles.open : ""} ${styles.header}`} onKeyDown={(e)=> handleSearch(e)}>
+    <header className={`${isToggleOn ? styles.open : ""} ${styles.header}`} onKeyDown={(e) => handleSearch(e)}>
       <a href="/" className={styles.logo} >HENRY FOOD</a>
       <div className={styles.group}>
         <ul className={styles.navigation}>
@@ -69,40 +73,40 @@ import { useNavigate } from "react-router-dom";
         </ul>
         <div className={styles.search}>
           <span className={styles.icon}>
-            <img 
+            <img
               src={searchBtn}
-              alt="SearchBtn" 
-              name="search-outline" 
-              className={`${styles.searchBtn} ${isOpen ? styles.active : ""}`}              
-              onClick={handleClickSearchBtn}          
+              alt="SearchBtn"
+              name="search-outline"
+              className={`${styles.searchBtn} ${isOpen ? styles.active : ""}`}
+              onClick={handleClickSearchBtn}
             />
-            <img 
-              src={closeBtn} 
-              alt="CloseBtn" 
-              name="close-outline" 
+            <img
+              src={closeBtn}
+              alt="CloseBtn"
+              name="close-outline"
               className={`${styles.closeBtn}  ${isOpen ? styles.active : ""}`}
               onClick={handleClickCloseBtn}
             />
           </span>
         </div>
-        <img 
-          src={menuBtn} 
-          alt="MenuBtn" 
+        <img
+          src={menuBtn}
+          alt="MenuBtn"
           className={`${styles.menuToggle}  ${isOpen ? styles.hide : ""}`}
           onClick={handleClickHeader}
         />
       </div>
       <div className={`${styles.searchBox}  ${isOpen ? styles.active : ""}`}>
-        <input 
-          type="text" 
+        <input
+          type="text"
           name="searchBox"
-          placeholder="look for your recipe..." 
-          value={searchValue.searchBox} 
-          onChange={onSearchChange} 
+          placeholder="look for your recipe..."
+          value={searchValue}
+          onChange={onSearchChange}
         />
       </div>
     </header>
   );
 }
 
-export default connect ()(Navigation)
+export default connect()(Navigation)

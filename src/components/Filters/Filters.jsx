@@ -45,10 +45,10 @@ const Filters = ({ apiData, dataBase, dietsData }) => {
       {
           <select onChange={handlerFilter} value="Diets">
             <option disabled hidden>Diets</option>
-            <option key={38} value="all">all</option>
+            <option key={70} value="all">all</option>
             {dietsData
               .map(({ id, name }) =>
-                <option key={id} value={name}>
+                <option key={id+name} value={name}>
                   {name}
                 </option>
               )}
