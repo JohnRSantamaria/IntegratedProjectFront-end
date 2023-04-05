@@ -212,9 +212,37 @@
   margin: auto;
   border-radius: 3.5px;
 }
+.formRight .figureContainer .imageURL
+{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.formRight .figureContainer .imageURL input[type="url"]
+{
+  border: 1px solid  rgba(0, 0, 0, 0.25);
+  text-align: center;
+  width: 90%;
+}
+.formRight .figureContainer .imageURL input[type="url"]:focus
+{
+  border: 1px solid  rgba(0, 0, 0, 0.25);
+}
+
+.formRight .figureContainer .imageURL label
+{
+  color: #810e05;
+  background-color:transparent;
+}
+.formRight .figureContainer .imageURL label:hover
+{
+  background-color:transparent;
+}
+
 .formRight .imageContainer input[type="file"]
 {
-  display: none;
+  display: none;  
 }
 .formRight .imageContainer label
 {
