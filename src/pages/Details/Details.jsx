@@ -64,8 +64,8 @@ export const Details = () => {
             </div>
             <div className={styles.stepsDetail}>
               <h3>Steps</h3>
-              {recipes.steps?.map(e => (
-                  <h4>{`${e.number}. ${e.step}`}</h4>
+              {recipes.steps?.map((e,i) => (
+                  <h4 key={i*e.number} >{`${e.number}. ${e.step}`}</h4>
               ))}
             </div>
           </div>
