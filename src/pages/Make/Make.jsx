@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { getListOfErrors, setError } from "../../redux/actions/actions";
-// import { postData } from "../../helpers/postData";
+import { postData } from "../../helpers/postData";
 
 import validation from "./validation.js";
 import styles from "./Make.module.css";
@@ -124,30 +124,19 @@ const Make = ({ dietsData }) => {
 
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = async ()=> {
     const error = Object.values(errors);
 
-
-    if (error.length === 0) {      
-      try {
-        const response = await fetch("http://localhost:3001/recipes", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: JSON.stringify(data)
-        })
-
-        if (response.status !== 200) throw new Error("There was an error creating the recipe.");
-
+    if(error.length === 0){
+       postData(data)
+       .then(()=>{
         window.alert("The recipe was created successfully");
         navigate("/food");
-
-      } catch (error) {
-        window.alert("There was an error creating the recipe");
-      }
-    } else {
+       })
+       .catch(() => {
+        window.alert("There was an error creating the recipe")}
+        )
+    }else{
       dispatch(getListOfErrors(error));
       dispatch(setError(true));
     }
